@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Engine.Annotations;
 
 namespace Engine.Models;
 
@@ -19,7 +18,7 @@ public class Player : INotifyPropertyChanged
         set
         {
             _name = value;
-            OnPropertyChanged("ExperiencePoints");
+            OnPropertyChanged("Name");
         }
     }
 
@@ -29,7 +28,7 @@ public class Player : INotifyPropertyChanged
         set
         {
             _characterClass = value;
-            OnPropertyChanged("ExperiencePoints");
+            OnPropertyChanged("CharacterClass");
         }
     }
 
@@ -39,7 +38,7 @@ public class Player : INotifyPropertyChanged
         set
         {
             _hitPoint = value;
-            OnPropertyChanged("ExperiencePoints");
+            OnPropertyChanged("HitPoints");
         }
     }
 
@@ -59,7 +58,7 @@ public class Player : INotifyPropertyChanged
         set
         {
             _level = value;
-            OnPropertyChanged("ExperiencePoints");
+            OnPropertyChanged("Level");
         }
     }
 
@@ -69,13 +68,12 @@ public class Player : INotifyPropertyChanged
         set
         {
             _gold = value;
-            OnPropertyChanged("ExperiencePoints");
+            OnPropertyChanged("Gold");
         }
     }
     
     public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
+    
     protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
