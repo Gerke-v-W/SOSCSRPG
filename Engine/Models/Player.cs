@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Engine.Annotations;
 
 namespace Engine.Models;
 
-public class Player : INotifyPropertyChanged
+public class Player : BaseNotificationClass
 {
     private string _name;
     private string _characterClass;
@@ -19,7 +18,7 @@ public class Player : INotifyPropertyChanged
         set
         {
             _name = value;
-            OnPropertyChanged("ExperiencePoints");
+            OnPropertyChanged(nameof(Name));
         }
     }
 
@@ -29,7 +28,7 @@ public class Player : INotifyPropertyChanged
         set
         {
             _characterClass = value;
-            OnPropertyChanged("ExperiencePoints");
+            OnPropertyChanged(nameof(CharacterClass));
         }
     }
 
@@ -39,7 +38,7 @@ public class Player : INotifyPropertyChanged
         set
         {
             _hitPoint = value;
-            OnPropertyChanged("ExperiencePoints");
+            OnPropertyChanged(nameof(HitPoints));
         }
     }
 
@@ -49,7 +48,7 @@ public class Player : INotifyPropertyChanged
         set
         {
             _experiencePoints = value;
-            OnPropertyChanged("ExperiencePoints");
+            OnPropertyChanged(nameof(ExperiencePoints));
         }
     }
 
@@ -59,7 +58,7 @@ public class Player : INotifyPropertyChanged
         set
         {
             _level = value;
-            OnPropertyChanged("ExperiencePoints");
+            OnPropertyChanged(nameof(Level));
         }
     }
 
@@ -69,15 +68,7 @@ public class Player : INotifyPropertyChanged
         set
         {
             _gold = value;
-            OnPropertyChanged("ExperiencePoints");
+            OnPropertyChanged(nameof(Gold));
         }
-    }
-    
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
