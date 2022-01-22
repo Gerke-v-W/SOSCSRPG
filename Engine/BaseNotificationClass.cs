@@ -1,6 +1,14 @@
-﻿namespace Engine;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
-public class BaseNotificationClass
+namespace Engine;
+
+public class BaseNotificationClass : INotifyPropertyChanged
 {
-    
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 }
